@@ -44,9 +44,9 @@ public class DataStore
 		this.addDefault(defaults, Messages.ChatLocked2, "You're invisible.  Use /UnlockChat (/uc) to start chatting.", null);
 		this.addDefault(defaults, Messages.ChatUnlocked, "Chat unlocked.", null);
 		this.addDefault(defaults, Messages.Vanished, "You're now invisible to players who don't have permission to see you.  Use /Appear to become visible.", null);
-		this.addDefault(defaults, Messages.Appeared, "You're now visible to all players.  Use /Vanish to disappear again.", null);
+		this.addDefault(defaults, Messages.Appeared, "You're now visible to all players.  Use /PaVanish to disappear again.", null);
 		this.addDefault(defaults, Messages.Reloaded, "Reloaded settings from the config file.  If you've updated PhantomAdmin.jar, you still need to reboot or /reload the server.", null);
-		this.addDefault(defaults, Messages.NotInvisibleWarning, "Warning: You're not invisible.  You can use /Vanish to disappear.", null);
+		this.addDefault(defaults, Messages.NotInvisibleWarning, "Warning: You're not invisible.  You can use /PaVanish to disappear.", null);
 		this.addDefault(defaults, Messages.FakePlayerNotFound, "Player not found.", null);
 		
         //load the config file

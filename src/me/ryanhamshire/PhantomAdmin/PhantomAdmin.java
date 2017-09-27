@@ -406,7 +406,7 @@ public class PhantomAdmin extends JavaPlugin
             return true;
         }
         
-        else if(cmd.getName().equalsIgnoreCase("vanish") && player != null)
+        else if(cmd.getName().equalsIgnoreCase("pavanish") && player != null)
         {
             this.hidePlayer(player);
             PhantomAdmin.sendMessage(player, TextMode.Success, Messages.Vanished);
@@ -450,7 +450,7 @@ public class PhantomAdmin extends JavaPlugin
             return true;
         }
         
-        else if(cmd.getName().equalsIgnoreCase("whois"))
+        else if(cmd.getName().equalsIgnoreCase("pawhois"))
         {
             @SuppressWarnings("unchecked")
             Collection<Player> players = (Collection<Player>)this.getServer().getOnlinePlayers();
