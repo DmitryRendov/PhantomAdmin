@@ -1,6 +1,6 @@
 name: PhantomAdmin
 main: me.ryanhamshire.PhantomAdmin.PhantomAdmin
-version: 2.3.1
+version: 2.3.2
 commands:
     SetNickname:
         description: Sets a player's anonymous nickname.
@@ -17,14 +17,14 @@ commands:
         usage: /UnlockChat
         aliases: [uc]
         permission: phantomadmin.invisible
-    Vanish:
+    PaVanish:
         description: Makes you invisible to players who don't have permission to see invisible players.
-        usage: /Vanish
-        aliases: [van, v, invisible]
+        usage: /PaVanish
+        aliases: [van, invisible]
         permission: phantomadmin.invisible
-    WhoIs:
+    PaWhoIs:
         description: Reveals the real player names for online phantom admins.
-        usage: /WhoIs
+        usage: /PaWhoIs
         permission: phantomadmin.seeinvisible
     Appear:
         description: Makes you visible to all players.

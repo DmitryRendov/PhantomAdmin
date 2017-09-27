@@ -62,13 +62,13 @@ VNP hasn't been updated in more than a year, and the comments are disabled. PA i
 
 /Appear makes you visible to all players.
 
-/Vanish makes you invisible to all players who don't have permission to see invisible.
+/PaVanish makes you invisible to all players who don't have permission to see invisible.
 
 /PlayerInventory accesses a player's personal inventory.
 
 /EnderInventory accesses a player's ender chest inventory.
 
-/WhoIs reveals the real names of nicknamed players.
+/PaWhoIs reveals the real names of nicknamed players.
 
 /PAReload re-loads settings from the config file, useful if you've changed your config while the server is running.
 
