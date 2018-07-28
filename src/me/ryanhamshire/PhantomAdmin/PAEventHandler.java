@@ -563,7 +563,7 @@ class PAEventHandler implements Listener
 	    {
 	        event.setCancelled(true);
 	        PlayerData data = PlayerData.FromPlayer(player);
-	        if(!data.gotPlateInfo && event.getClickedBlock().getType() != Material.SOIL)
+	        if(!data.gotPlateInfo && event.getClickedBlock().getType() != Material.FARMLAND)
 	        {
 	            PhantomAdmin.sendMessage(player, TextMode.Warn, Messages.NoTouchPlateWhileInvisible);
 	            data.gotPlateInfo = true;
@@ -660,7 +660,7 @@ class PAEventHandler implements Listener
             
             player.setVelocity(previousVelocity);
             
-            player.playSound(player.getEyeLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, .75f, 1f);
+            player.playSound(player.getEyeLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, .75f, 1f);
 		}
 	}
 }
