@@ -4,7 +4,7 @@
 
     <groupId>me.ryanhamshire</groupId>
     <artifactId>PhantomAdmin</artifactId>
-    <version>2.3.2-SNAPSHOT</version>
+    <version>2.4.0</version>
     <packaging>jar</packaging>
     <name>PhantomAdmin</name>
     <description>Go beyond invisible - be undetectable and anonymous.</description>
@@ -17,9 +17,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.13-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
