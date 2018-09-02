@@ -21,6 +21,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bstats.bukkit.Metrics;
 
 public class PhantomAdmin extends JavaPlugin
 {
@@ -73,8 +74,10 @@ public class PhantomAdmin extends JavaPlugin
 		PluginManager pluginManager = this.getServer().getPluginManager();
 		PAEventHandler eventHandler = new PAEventHandler();
 		pluginManager.registerEvents(eventHandler, this);
-		
-		AddLogEntry("PhantomAdmin enabled.");
+
+        Metrics metrics = new Metrics(this);
+
+        AddLogEntry("PhantomAdmin enabled.");
 	}
 	
 	private void loadConfig()
