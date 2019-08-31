@@ -6,6 +6,7 @@
 # maven
 /target
 dependency-reduced-pom.xml
+PhantomAdmin.iml
 
 # vim
 .*.sw[a-p]

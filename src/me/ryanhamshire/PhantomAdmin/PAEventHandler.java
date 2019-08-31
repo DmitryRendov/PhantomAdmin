@@ -101,7 +101,7 @@ class PAEventHandler implements Listener
 	    if(event.getEntityType() == EntityType.EXPERIENCE_ORB)
 	    {
 	        LivingEntity target = event.getTarget();
-	        if(target.getType() == EntityType.PLAYER)
+	        if(target != null && target.getType() == EntityType.PLAYER)
             {
                 Player player = (Player)target;
                 if(PhantomAdmin.instance.isInvisible(player) && player.getGameMode() != GameMode.SURVIVAL)
