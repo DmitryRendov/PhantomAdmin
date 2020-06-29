@@ -4,7 +4,7 @@
 
     <groupId>me.ryanhamshire</groupId>
     <artifactId>PhantomAdmin</artifactId>
-    <version>2.4.4</version>
+    <version>2.4.5</version>
     <packaging>jar</packaging>
     <name>PhantomAdmin</name>
     <description>Go beyond invisible - be undetectable and anonymous.</description>
@@ -12,21 +12,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <build.number>${buildNumber}</build.number>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.14.4-R0.1-SNAPSHOT</version>
+            <version>1.16.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <!-- bStats -->
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
-            <version>1.2</version>
+            <version>1.7</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -42,8 +41,8 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>bstats-repo</id>
-            <url>http://repo.bstats.org/content/repositories/releases/</url>
+            <id>CodeMC</id>
+            <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
     </repositories>
 

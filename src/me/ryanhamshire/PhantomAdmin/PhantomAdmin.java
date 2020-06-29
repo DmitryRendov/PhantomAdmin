@@ -75,7 +75,7 @@ public class PhantomAdmin extends JavaPlugin
 		PAEventHandler eventHandler = new PAEventHandler();
 		pluginManager.registerEvents(eventHandler, this);
 
-        Metrics metrics = new Metrics(this);
+        Metrics metrics = new Metrics(this, 3218);
 
         AddLogEntry("PhantomAdmin enabled.");
 	}
