@@ -16,11 +16,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.Chest;
-import org.bukkit.block.DoubleChest;
+import org.bukkit.block.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -30,6 +26,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -120,15 +117,13 @@ class PAEventHandler implements Listener
 	            if(PhantomAdmin.instance.isInvisible(player) && player.getGameMode() != GameMode.SURVIVAL)
 	            {
 	                event.setCancelled(true);
-	                return;
-	            }
+                }
 	        }
 	    }
     }
 	
-	@SuppressWarnings("deprecation")
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
-    void onPlayerCommandPreprocess (PlayerCommandPreprocessEvent event)
+	@EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
+    void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event)
     {
         Player player = event.getPlayer();
         String message = event.getMessage();
@@ -381,21 +376,19 @@ class PAEventHandler implements Listener
     }
 	
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    void onPlayerPickupItem(PlayerPickupItemEvent event)
+    void onPlayerPickupItem(EntityPickupItemEvent event)
     {
-	    Player player = event.getPlayer();
-	    if(!player.isSneaking() && PhantomAdmin.instance.isInvisible(player))
-	    {
-	        event.setCancelled(true);
-	        PlayerData data = PlayerData.FromPlayer(player);
-            if(!data.gotItemPickupInfo)
-            {
-                PhantomAdmin.sendMessage(player, TextMode.Warn, Messages.NoItemPickupWhileInvisible);
-                data.gotItemPickupInfo = true;
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            if (!player.isSneaking() && PhantomAdmin.instance.isInvisible(player)) {
+                event.setCancelled(true);
+                PlayerData data = PlayerData.FromPlayer(player);
+                if (!data.gotItemPickupInfo) {
+                    PhantomAdmin.sendMessage(player, TextMode.Warn, Messages.NoItemPickupWhileInvisible);
+                    data.gotItemPickupInfo = true;
+                }
             }
-            
-	        return;
-	    }
+        }
     }
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -426,7 +419,6 @@ class PAEventHandler implements Listener
                 PhantomAdmin.sendMessage(player, TextMode.Warn, Messages.NoItemDropWhileInvisible);
                 data.gotItemDropInfo = true;
             }
-            return;
         }
     }
 	
@@ -549,7 +541,14 @@ class PAEventHandler implements Listener
         {
             return "Chest:" + ((Chest)holder).getLocation().toString();
         }
-        
+        else if(holder instanceof Barrel)
+        {
+            return "Barrel:" + ((Barrel)holder).getLocation().toString();
+        }
+        else if(holder instanceof ShulkerBox)
+        {
+            return "ShulkerBox:" + ((ShulkerBox)holder).getLocation().toString();
+        }
         return null;
     }
 	
