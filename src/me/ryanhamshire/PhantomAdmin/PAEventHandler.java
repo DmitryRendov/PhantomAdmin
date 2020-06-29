@@ -117,15 +117,13 @@ class PAEventHandler implements Listener
 	            if(PhantomAdmin.instance.isInvisible(player) && player.getGameMode() != GameMode.SURVIVAL)
 	            {
 	                event.setCancelled(true);
-	                return;
-	            }
+                }
 	        }
 	    }
     }
 	
-	@SuppressWarnings("deprecation")
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
-    void onPlayerCommandPreprocess (PlayerCommandPreprocessEvent event)
+	@EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
+    void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event)
     {
         Player player = event.getPlayer();
         String message = event.getMessage();

@@ -133,7 +133,7 @@ public class PhantomAdmin extends JavaPlugin
             {
                 realName = player.getName();
             }
-            
+
             String nickname = config.getString("Anonymity.Players." + uuid + ".Nickname", this.config_defaultNickname);
             String chatFormat = config.getString("Anonymity.Players." + uuid + ".Chat Message Format", this.config_defaultChatFormat);
                         
@@ -163,7 +163,7 @@ public class PhantomAdmin extends JavaPlugin
 	    for(UUID key : this.nicknameMap.keySet())
 	    {
             OfflinePlayer player = Bukkit.getServer().getOfflinePlayer(key);
-            if(player == null || player.getName() == null || player.getName().isEmpty())
+            if(player.getName() == null || player.getName().isEmpty())
             {
                 config.set("Anonymity.Players." + key + ".Real Name", "??? (No name found for this UUID in world data.)");
             }
@@ -243,7 +243,7 @@ public class PhantomAdmin extends JavaPlugin
             {
                 if(this.isInvisible(onlinePlayer))
                 {
-                    player.hidePlayer(onlinePlayer);
+                    player.hidePlayer(this, onlinePlayer);
                 }
             }
         }
@@ -299,7 +299,7 @@ public class PhantomAdmin extends JavaPlugin
         {
             if(!onlinePlayer.hasPermission("phantomadmin.seeinvisible"))
             {
-                onlinePlayer.hidePlayer(player);
+                onlinePlayer.hidePlayer(this, player);
             }
         }
         
@@ -318,7 +318,7 @@ public class PhantomAdmin extends JavaPlugin
         Collection<Player> players = (Collection<Player>)Bukkit.getServer().getOnlinePlayers();
         for(Player onlinePlayer : players)
         {
-            onlinePlayer.showPlayer(player);
+            onlinePlayer.showPlayer(this, player);
         }
 	    
 	    PlayerData data = PlayerData.FromPlayer(player);
@@ -488,7 +488,6 @@ public class PhantomAdmin extends JavaPlugin
             if(args.length < 2) return false;
             
             String targetName = args[0];
-            @SuppressWarnings("deprecation")
 			Player target = this.getServer().getPlayerExact(targetName);
             if(target == null || (player != null && !player.canSee(target)))
             {
@@ -545,26 +544,21 @@ public class PhantomAdmin extends JavaPlugin
         }
     }
     
-    @SuppressWarnings("deprecation")
-    Player resolvePlayerByName(String name) 
+    Player resolvePlayerByName(String name)
     {
         //try online players first
         Player targetPlayer = this.getServer().getPlayerExact(name);
         if(targetPlayer != null) return targetPlayer;
         
         targetPlayer = this.getServer().getPlayer(name);
-        if(targetPlayer != null) return targetPlayer;
-        
-        return null;
+        return targetPlayer;
     }
 
     public String formatChatMessage(Player player, String message)
     {
         AnonymityInfo info = PhantomAdmin.instance.nicknameMap.get(player.getUniqueId());
         if(info == null) return null;
-        
-        String returnValue = info.chatFormat.replace('$', (char)0x00A7).replace("%nickname%", info.nickname).replace("%message%", message);
-        
-        return returnValue;
+
+        return info.chatFormat.replace('$', (char)0x00A7).replace("%nickname%", info.nickname).replace("%message%", message);
     }
 }
