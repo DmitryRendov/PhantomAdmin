@@ -30,6 +30,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -381,21 +382,19 @@ class PAEventHandler implements Listener
     }
 	
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    void onPlayerPickupItem(PlayerPickupItemEvent event)
+    void onPlayerPickupItem(EntityPickupItemEvent event)
     {
-	    Player player = event.getPlayer();
-	    if(!player.isSneaking() && PhantomAdmin.instance.isInvisible(player))
-	    {
-	        event.setCancelled(true);
-	        PlayerData data = PlayerData.FromPlayer(player);
-            if(!data.gotItemPickupInfo)
-            {
-                PhantomAdmin.sendMessage(player, TextMode.Warn, Messages.NoItemPickupWhileInvisible);
-                data.gotItemPickupInfo = true;
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            if (!player.isSneaking() && PhantomAdmin.instance.isInvisible(player)) {
+                event.setCancelled(true);
+                PlayerData data = PlayerData.FromPlayer(player);
+                if (!data.gotItemPickupInfo) {
+                    PhantomAdmin.sendMessage(player, TextMode.Warn, Messages.NoItemPickupWhileInvisible);
+                    data.gotItemPickupInfo = true;
+                }
             }
-            
-	        return;
-	    }
+        }
     }
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -426,7 +425,6 @@ class PAEventHandler implements Listener
                 PhantomAdmin.sendMessage(player, TextMode.Warn, Messages.NoItemDropWhileInvisible);
                 data.gotItemDropInfo = true;
             }
-            return;
         }
     }
 	
