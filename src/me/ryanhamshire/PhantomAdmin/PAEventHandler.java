@@ -16,11 +16,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.Chest;
-import org.bukkit.block.DoubleChest;
+import org.bukkit.block.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -547,7 +543,14 @@ class PAEventHandler implements Listener
         {
             return "Chest:" + ((Chest)holder).getLocation().toString();
         }
-        
+        else if(holder instanceof Barrel)
+        {
+            return "Barrel:" + ((Barrel)holder).getLocation().toString();
+        }
+        else if(holder instanceof ShulkerBox)
+        {
+            return "ShulkerBox:" + ((ShulkerBox)holder).getLocation().toString();
+        }
         return null;
     }
 	
