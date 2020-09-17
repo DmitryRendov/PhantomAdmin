@@ -1,6 +1,6 @@
 name: PhantomAdmin
 main: me.ryanhamshire.PhantomAdmin.PhantomAdmin
-version: 2.4.5
+version: ${project.version}
 api-version: 1.13
 commands:
     SetNickname:
