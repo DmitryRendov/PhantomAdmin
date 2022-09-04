@@ -605,7 +605,7 @@ class PAEventHandler implements Listener
     		
     		else if(action == Action.RIGHT_CLICK_BLOCK)
             {
-    		    player.setMetadata("lastTeleSource", new FixedMetadataValue(PhantomAdmin.instance, new Long(System.currentTimeMillis())));
+    		    player.setMetadata("lastTeleSource", new FixedMetadataValue(PhantomAdmin.instance, System.currentTimeMillis()));
                 
     		    int maxDistance = 100;
                 
